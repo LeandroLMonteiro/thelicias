@@ -1,4 +1,39 @@
 
+/**
+ * @swagger
+ * /dados-conf:
+ *   get:
+ *     summary: Lista todas as configurações
+ *     tags: [Configurações]
+  *     responses:
+ *       200:
+ *         description: Lista de configurações encontrada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/DadosConf'
+ *       500:
+ *         description: Erro interno do servidor
+ *   post:
+ *     summary: Cria uma nova configuração
+ *     tags: [Configurações]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateDadosConfDto'
+ *     responses:
+ *       201:
+ *         description: Configuração criada com sucesso
+ *       400:
+ *         description: Dados inválidos
+ *       500:
+ *         description: Erro interno do servidor
+ */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import dadosConfService from "@/services/DadosConfService";
 import { CreateDadosConfDto } from "@/dtos/CreateDadosConfDto";

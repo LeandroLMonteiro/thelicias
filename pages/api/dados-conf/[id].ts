@@ -1,3 +1,61 @@
+/**
+ * @swagger
+ * /dados-conf/{id}:
+ *   get:
+ *     summary: Obtém uma configuração específica
+ *     tags: [Configurações]
+  *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID da configuração
+ *     responses:
+ *       200:
+ *         description: Configuração encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DadosConf'
+ *       404:
+ *         description: Configuração não encontrada
+ *   put:
+ *     summary: Atualiza uma configuração
+ *     tags: [Configurações]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateDadosConfDto'
+ *     responses:
+ *       200:
+ *         description: Configuração atualizada com sucesso
+ *       404:
+ *         description: Configuração não encontrada
+ *   delete:
+ *     summary: Remove uma configuração
+ *     tags: [Configurações]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       204:
+ *         description: Configuração removida com sucesso
+ *       404:
+ *         description: Configuração não encontrada
+ */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import dadosConfService from "@/services/DadosConfService";
 import { UpdateDadosConfDto } from "@/dtos/UpdateDadosConfDto";

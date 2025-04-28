@@ -6,7 +6,14 @@ const nextConfig = {
       POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
       POSTGRES_DATABASE: process.env.POSTGRES_DATABASE,
       DATABASE_PORT: process.env.DATABASE_PORT
+    },
+    webpack: (config) => {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false
+      };
+      return config;
     }
-  }
+  };
 
-  module.exports = nextConfig
+  module.exports = nextConfig;

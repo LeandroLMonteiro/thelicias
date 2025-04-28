@@ -1,3 +1,47 @@
+/**
+ * @swagger
+ * /dados-conf/{id}/itens:
+ *   get:
+ *     summary: Lista todos os itens de uma configuração
+ *     tags: [Itens de Configuração]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID da configuração
+ *     responses:
+ *       200:
+ *         description: Lista de itens encontrada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/DadosConfItem'
+ *   post:
+ *     summary: Adiciona um novo item à configuração
+ *     tags: [Itens de Configuração]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateDadosConfItemDto'
+ *     responses:
+ *       201:
+ *         description: Item criado com sucesso
+ *       404:
+ *         description: Configuração não encontrada
+ */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import dadosConfService from "@/services/DadosConfService";
 import { CreateDadosConfItemDto } from "@/dtos/CreateDadosConfItemDto";

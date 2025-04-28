@@ -1,3 +1,69 @@
+/**
+ * @swagger
+ * /dados-conf/{id}/itens/{itemId}:
+ *   get:
+ *     summary: Obtém um item específico
+ *     tags: [Itens de Configuração]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Item encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DadosConfItem'
+ *   put:
+ *     summary: Atualiza um item
+ *     tags: [Itens de Configuração]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateDadosConfItemDto'
+ *     responses:
+ *       200:
+ *         description: Item atualizado com sucesso
+ *   delete:
+ *     summary: Remove um item
+ *     tags: [Itens de Configuração]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       204:
+ *         description: Item removido com sucesso
+ */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import dadosConfService from "@/services/DadosConfService";
 import { UpdateDadosConfItemDto } from "@/dtos/UpdateDadosConfItemDto";
