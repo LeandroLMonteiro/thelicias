@@ -1,13 +1,12 @@
-
 /**
  * @swagger
  * /dados-conf:
  *   get:
- *     summary: Lista todas as configurações
+ *     summary: Lista todas as configurações existentes e exibe os detalhes
  *     tags: [Configurações]
-  *     responses:
+ *     responses:
  *       200:
- *         description: Lista de configurações encontrada com sucesso
+ *         description: Lista de configurações
  *         content:
  *           application/json:
  *             schema:
@@ -35,11 +34,11 @@
  */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import dadosConfService from "@/services/DadosConfService";
-import { CreateDadosConfDto } from "@/dtos/CreateDadosConfDto";
+import dadosConfService from "@/services/dadosConfService";
+import { CreateDadosConfDto } from "@/dtos/createDadosConfDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
-import initializeDatabase from '@/database/db';
+import initializeDatabase from "@/database/db";
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,6 +1,4 @@
-import { createSwaggerSpec } from 'next-swagger-doc';
-
-const apiConfig = {
+export const apiConfig = {
   openapi: '3.0.0',
   info: {
     title: 'Thelicias API Documentation',
@@ -32,11 +30,4 @@ const apiConfig = {
       }
     }
   }
-};
-
-export const getSwaggerSpec = () => {
-  return createSwaggerSpec({
-    definition: apiConfig,
-    apiFolder: 'pages/api'
-  });
 };

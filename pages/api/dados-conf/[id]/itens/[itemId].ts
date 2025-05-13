@@ -2,8 +2,8 @@
  * @swagger
  * /dados-conf/{id}/itens/{itemId}:
  *   get:
- *     summary: Obtém um item específico
- *     tags: [Itens de Configuração]
+ *     summary: Obtém um item específico de uma configuração por ID
+ *     tags: [Configurações - Itens]
  *     parameters:
  *       - in: path
  *         name: id
@@ -23,8 +23,8 @@
  *             schema:
  *               $ref: '#/components/schemas/DadosConfItem'
  *   put:
- *     summary: Atualiza um item
- *     tags: [Itens de Configuração]
+ *     summary: Atualiza um item específico de uma configuração por ID
+ *     tags: [Configurações - Itens]
  *     parameters:
  *       - in: path
  *         name: id
@@ -46,8 +46,8 @@
  *       200:
  *         description: Item atualizado com sucesso
  *   delete:
- *     summary: Remove um item
- *     tags: [Itens de Configuração]
+ *     summary: Remove um item específico de uma configuração por ID
+ *     tags: [Configurações - Itens]
  *     parameters:
  *       - in: path
  *         name: id
@@ -65,8 +65,8 @@
  */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import dadosConfService from "@/services/DadosConfService";
-import { UpdateDadosConfItemDto } from "@/dtos/UpdateDadosConfItemDto";
+import dadosConfService from "@/services/dadosConfService";
+import { UpdateDadosConfItemDto } from "@/dtos/updateDadosConfItemDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
 import { AppDataSource } from "@/database/data-source";

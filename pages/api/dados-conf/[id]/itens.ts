@@ -2,8 +2,8 @@
  * @swagger
  * /dados-conf/{id}/itens:
  *   get:
- *     summary: Lista todos os itens de uma configuração
- *     tags: [Itens de Configuração]
+ *     summary: Lista todos os itens de uma configuração específica
+ *     tags: [Configurações - Itens]
  *     parameters:
  *       - in: path
  *         name: id
@@ -21,8 +21,8 @@
  *               items:
  *                 $ref: '#/components/schemas/DadosConfItem'
  *   post:
- *     summary: Adiciona um novo item à configuração
- *     tags: [Itens de Configuração]
+ *     summary: Adiciona um novo item à configuração especificada
+ *     tags: [Configurações - Itens]
  *     parameters:
  *       - in: path
  *         name: id
@@ -43,8 +43,8 @@
  */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import dadosConfService from "@/services/DadosConfService";
-import { CreateDadosConfItemDto } from "@/dtos/CreateDadosConfItemDto";
+import dadosConfService from "@/services/dadosConfService";
+import { CreateDadosConfItemDto } from "@/dtos/createDadosConfItemDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
 import initializeDatabase from "@/database/db";
@@ -60,7 +60,9 @@ export default async function handler(
     await initializeDatabase();
 
     if (isNaN(dadosConfId)) {
-      return res.status(400).json({ message: "Item de Classe de Configuração inválido" });
+      return res
+        .status(400)
+        .json({ message: "Item de Classe de Configuração inválido" });
     }
 
     switch (req.method) {
@@ -84,7 +86,9 @@ export default async function handler(
           createDadosConfItemDto
         );
         if (!newItem) {
-          return res.status(404).json({ message: "Classe de Configuração não encontrado" });
+          return res
+            .status(404)
+            .json({ message: "Classe de Configuração não encontrado" });
         }
         res.status(201).json(newItem);
         break;

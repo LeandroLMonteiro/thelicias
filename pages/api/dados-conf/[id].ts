@@ -2,9 +2,9 @@
  * @swagger
  * /dados-conf/{id}:
  *   get:
- *     summary: Obtém uma configuração específica
+ *     summary: Lista a configuração por ID exibe os detalhes
  *     tags: [Configurações]
-  *     parameters:
+ *     parameters:
  *       - in: path
  *         name: id
  *         required: true
@@ -21,7 +21,7 @@
  *       404:
  *         description: Configuração não encontrada
  *   put:
- *     summary: Atualiza uma configuração
+ *     summary: Atualiza uma configuração por ID
  *     tags: [Configurações]
  *     parameters:
  *       - in: path
@@ -41,7 +41,7 @@
  *       404:
  *         description: Configuração não encontrada
  *   delete:
- *     summary: Remove uma configuração
+ *     summary: Remove uma configuração por ID
  *     tags: [Configurações]
  *     parameters:
  *       - in: path
@@ -57,8 +57,8 @@
  */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import dadosConfService from "@/services/DadosConfService";
-import { UpdateDadosConfDto } from "@/dtos/UpdateDadosConfDto";
+import dadosConfService from "@/services/dadosConfService";
+import { UpdateDadosConfDto } from "@/dtos/updateDadosConfDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
 import { AppDataSource } from "@/database/data-source";
@@ -82,7 +82,9 @@ export default async function handler(
       case "GET":
         const dadosConf = await dadosConfService.findOne(dadosConfId);
         if (!dadosConf) {
-          return res.status(404).json({ message: "Classe Configuração não encontrada" });
+          return res
+            .status(404)
+            .json({ message: "Classe Configuração não encontrada" });
         }
         res.status(200).json(dadosConf);
         break;
@@ -97,14 +99,18 @@ export default async function handler(
           updateDadosConfDto
         );
         if (!updatedDadosConf) {
-          return res.status(404).json({ message: "Classe Configuração não encontrada" });
+          return res
+            .status(404)
+            .json({ message: "Classe Configuração não encontrada" });
         }
         res.status(200).json(updatedDadosConf);
         break;
       case "DELETE":
         const deleted = await dadosConfService.delete(dadosConfId);
         if (!deleted) {
-          return res.status(404).json({ message: "Classe Configuração não encontrada" });
+          return res
+            .status(404)
+            .json({ message: "Classe Configuração não encontrada" });
         }
         res.status(204).end(); // No Content
         break;
