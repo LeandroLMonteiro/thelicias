@@ -57,7 +57,7 @@
  */
 
 import { NextApiRequest, NextApiResponse } from "next";
-import dadosConfService from "@/services/dadosConfService";
+import dadosConfService from "./../../../src/services/dadosConfService"
 import { UpdateDadosConfDto } from "@/dtos/updateDadosConfDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
