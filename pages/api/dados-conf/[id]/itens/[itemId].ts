@@ -69,7 +69,6 @@ import dadosConfService from "@/services/dadosConfService";
 import { UpdateDadosConfItemDto } from "@/dtos/updateDadosConfItemDto";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
-import { AppDataSource } from "@/database/data-source";
 import initializeDatabase from "@/database/db";
 
 export default async function handler(
